@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/kubernetes-incubator/external-dns/vendor/github.com/ffledgling/pdns-go/models"
+	"github.com/ffledgling/pdns-go/models"
 )
 
 // ListServersReader is a Reader for the ListServers structure.

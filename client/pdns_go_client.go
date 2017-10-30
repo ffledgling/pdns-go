@@ -11,11 +11,11 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/kubernetes-incubator/external-dns/vendor/github.com/ffledgling/pdns-go/client/servers"
-	"github.com/kubernetes-incubator/external-dns/vendor/github.com/ffledgling/pdns-go/client/zones"
+	"github.com/ffledgling/pdns-go/client/servers"
+	"github.com/ffledgling/pdns-go/client/zones"
 )
 
-// Default power DNS authoritative HTTP HTTP client.
+// Default pdns go HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -30,14 +30,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"http"}
 
-// NewHTTPClient creates a new power DNS authoritative HTTP HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *PowerDNSAuthoritativeHTTP {
+// NewHTTPClient creates a new pdns go HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *PdnsGo {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new power DNS authoritative HTTP HTTP client,
+// NewHTTPClientWithConfig creates a new pdns go HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *PowerDNSAuthoritativeHTTP {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *PdnsGo {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
@@ -51,9 +51,9 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Pow
 	return New(transport, formats)
 }
 
-// New creates a new power DNS authoritative HTTP client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerDNSAuthoritativeHTTP {
-	cli := new(PowerDNSAuthoritativeHTTP)
+// New creates a new pdns go client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *PdnsGo {
+	cli := new(PdnsGo)
 	cli.Transport = transport
 
 	cli.Servers = servers.New(transport, formats)
@@ -102,8 +102,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// PowerDNSAuthoritativeHTTP is a client for power DNS authoritative HTTP
-type PowerDNSAuthoritativeHTTP struct {
+// PdnsGo is a client for pdns go
+type PdnsGo struct {
 	Servers *servers.Client
 
 	Zones *zones.Client
@@ -112,7 +112,7 @@ type PowerDNSAuthoritativeHTTP struct {
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *PowerDNSAuthoritativeHTTP) SetTransport(transport runtime.ClientTransport) {
+func (c *PdnsGo) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 
 	c.Servers.SetTransport(transport)
