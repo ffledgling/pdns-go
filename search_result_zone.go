@@ -9,5 +9,12 @@
 
 package pdnsapi
 
-type Servers struct {
+type SearchResultZone struct {
+
+	Name string `json:"name,omitempty"`
+
+	// set to \"zone\"
+	ObjectType string `json:"object_type,omitempty"`
+
+	ZoneId string `json:"zone_id,omitempty"`
 }

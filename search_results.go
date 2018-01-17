@@ -9,5 +9,5 @@
 
 package pdnsapi
 
-type Servers struct {
+type SearchResults struct {
 }

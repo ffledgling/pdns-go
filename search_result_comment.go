@@ -9,15 +9,16 @@
 
 package pdnsapi
 
-// A comment about an RRSet.
-type Comment struct {
+type SearchResultComment struct {
 
-	// The actual comment
 	Content string `json:"content,omitempty"`
 
-	// Name of an account that added the comment
-	Account string `json:"account,omitempty"`
+	Name string `json:"name,omitempty"`
 
-	// Timestamp of the last change to the comment
-	ModifidedAt int32 `json:"modifided_at,omitempty"`
+	// set to \"comment\"
+	ObjectType string `json:"object_type,omitempty"`
+
+	ZoneId string `json:"zone_id,omitempty"`
+
+	Zone string `json:"zone,omitempty"`
 }

@@ -24,24 +24,24 @@ var (
 	_ context.Context
 )
 
-type ServersApiService service
+type ConfigApiService service
 
 
-/* ServersApiService List a server
+/* ConfigApiService Returns all ConfigSettings for a single server
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param serverId The id of the server to retrieve
- @return Server*/
-func (a *ServersApiService) ListServer(ctx context.Context, serverId string) (Server,  *http.Response, error) {
+ @return []ConfigSetting*/
+func (a *ConfigApiService) GetConfig(ctx context.Context, serverId string) ([]ConfigSetting,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  Server
+	 	successPayload  []ConfigSetting
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/servers/{server_id}"
+	localVarPath := a.client.cfg.BasePath + "/servers/{server_id}/config"
 	localVarPath = strings.Replace(localVarPath, "{"+"server_id"+"}", fmt.Sprintf("%v", serverId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -103,20 +103,25 @@ func (a *ServersApiService) ListServer(ctx context.Context, serverId string) (Se
 	return successPayload, localVarHttpResponse, err
 }
 
-/* ServersApiService List all servers
+/* ConfigApiService Returns a specific ConfigSetting for a single server
+ NOT IMPLEMENTED
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @return []Server*/
-func (a *ServersApiService) ListServers(ctx context.Context) ([]Server,  *http.Response, error) {
+ @param serverId The id of the server to retrieve
+ @param configSettingName The name of the setting to retrieve
+ @return ConfigSetting*/
+func (a *ConfigApiService) GetConfigSetting(ctx context.Context, serverId string, configSettingName string) (ConfigSetting,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []Server
+	 	successPayload  ConfigSetting
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/servers"
+	localVarPath := a.client.cfg.BasePath + "/servers/{server_id}/config/{config_setting_name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"server_id"+"}", fmt.Sprintf("%v", serverId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"config_setting_name"+"}", fmt.Sprintf("%v", configSettingName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

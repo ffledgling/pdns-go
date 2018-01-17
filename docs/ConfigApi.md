@@ -1,16 +1,16 @@
-# \ServersApi
+# \ConfigApi
 
 All URIs are relative to *http://localhost:8081/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListServer**](ServersApi.md#ListServer) | **Get** /servers/{server_id} | List a server
-[**ListServers**](ServersApi.md#ListServers) | **Get** /servers | List all servers
+[**GetConfig**](ConfigApi.md#GetConfig) | **Get** /servers/{server_id}/config | Returns all ConfigSettings for a single server
+[**GetConfigSetting**](ConfigApi.md#GetConfigSetting) | **Get** /servers/{server_id}/config/{config_setting_name} | Returns a specific ConfigSetting for a single server
 
 
-# **ListServer**
-> Server ListServer(ctx, serverId)
-List a server
+# **GetConfig**
+> []ConfigSetting GetConfig(ctx, serverId)
+Returns all ConfigSettings for a single server
 
 ### Required Parameters
 
@@ -21,7 +21,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Server**](Server.md)
+[**[]ConfigSetting**](ConfigSetting.md)
 
 ### Authorization
 
@@ -34,16 +34,23 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ListServers**
-> []Server ListServers(ctx, )
-List all servers
+# **GetConfigSetting**
+> ConfigSetting GetConfigSetting(ctx, serverId, configSettingName)
+Returns a specific ConfigSetting for a single server
+
+NOT IMPLEMENTED
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **serverId** | **string**| The id of the server to retrieve | 
+  **configSettingName** | **string**| The name of the setting to retrieve | 
 
 ### Return type
 
-[**[]Server**](Server.md)
+[**ConfigSetting**](ConfigSetting.md)
 
 ### Authorization
 

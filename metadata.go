@@ -9,5 +9,12 @@
 
 package pdnsapi
 
-type Servers struct {
+// Represents zone metadata
+type Metadata struct {
+
+	// Name of the metadata
+	Kind string `json:"kind,omitempty"`
+
+	// Array with all values for this metadata kind.
+	Metadata []string `json:"metadata,omitempty"`
 }

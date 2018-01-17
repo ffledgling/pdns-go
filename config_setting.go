@@ -9,5 +9,14 @@
 
 package pdnsapi
 
-type Servers struct {
+type ConfigSetting struct {
+
+	// set to \"ConfigSetting\"
+	Name string `json:"name,omitempty"`
+
+	// The name of this setting (e.g. ‘webserver-port’)
+	Type_ string `json:"type,omitempty"`
+
+	// The value of setting name
+	Value string `json:"value,omitempty"`
 }

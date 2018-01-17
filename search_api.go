@@ -24,24 +24,27 @@ var (
 	_ context.Context
 )
 
-type ServersApiService service
+type SearchApiService service
 
 
-/* ServersApiService List a server
+/* SearchApiService Search the data inside PowerDNS
+ Search the data inside PowerDNS for search_term and return at most max_results. This includes zones, records and comments. The * character can be used in search_term as a wildcard character and the ? character can be used as a wildcard for a single character.
  * @param ctx context.Context for authentication, logging, tracing, etc.
  @param serverId The id of the server to retrieve
- @return Server*/
-func (a *ServersApiService) ListServer(ctx context.Context, serverId string) (Server,  *http.Response, error) {
+ @param q The string to search for
+ @param max Maximum number of entries to return
+ @return SearchResults*/
+func (a *SearchApiService) SearchData(ctx context.Context, serverId string, q string, max int32) (SearchResults,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  Server
+	 	successPayload  SearchResults
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/servers/{server_id}"
+	localVarPath := a.client.cfg.BasePath + "/servers/{server_id}/search-data"
 	localVarPath = strings.Replace(localVarPath, "{"+"server_id"+"}", fmt.Sprintf("%v", serverId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -49,6 +52,8 @@ func (a *ServersApiService) ListServer(ctx context.Context, serverId string) (Se
 	localVarFormParams := url.Values{}
 
 
+	localVarQueryParams.Add("q", parameterToString(q, ""))
+	localVarQueryParams.Add("max", parameterToString(max, ""))
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -103,26 +108,30 @@ func (a *ServersApiService) ListServer(ctx context.Context, serverId string) (Se
 	return successPayload, localVarHttpResponse, err
 }
 
-/* ServersApiService List all servers
+/* SearchApiService Query the log, filtered by search_term.
  * @param ctx context.Context for authentication, logging, tracing, etc.
- @return []Server*/
-func (a *ServersApiService) ListServers(ctx context.Context) ([]Server,  *http.Response, error) {
+ @param serverId The id of the server to retrieve
+ @param q The string to search for
+ @return []string*/
+func (a *SearchApiService) SearchLog(ctx context.Context, serverId string, q string) ([]string,  *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody interface{}
 		localVarFileName string
 		localVarFileBytes []byte
-	 	successPayload  []Server
+	 	successPayload  []string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/servers"
+	localVarPath := a.client.cfg.BasePath + "/servers/{server_id}/search-log"
+	localVarPath = strings.Replace(localVarPath, "{"+"server_id"+"}", fmt.Sprintf("%v", serverId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 
+	localVarQueryParams.Add("q", parameterToString(q, ""))
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 

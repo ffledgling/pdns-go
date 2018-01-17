@@ -9,5 +9,14 @@
 
 package pdnsapi
 
-type Servers struct {
+type StatisticItem struct {
+
+	// set to “StatisticItem”
+	Name string `json:"name,omitempty"`
+
+	// The name of this item (e.g. ‘uptime’)
+	Type_ string `json:"type,omitempty"`
+
+	// The value of item
+	Value string `json:"value,omitempty"`
 }
