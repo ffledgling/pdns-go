@@ -9,14 +9,11 @@
 
 package pdnsapi
 
-type StatisticItem struct {
+type MapStatisticItemValue struct {
 
-	// The name of this item (e.g. ‘uptime’)
+	// item name
 	Name string `json:"name,omitempty"`
 
-	// set to \"StatisticItem\"
-	Type_ string `json:"type,omitempty"`
-
-	// The value of item
+	// item value
 	Value string `json:"value,omitempty"`
 }
