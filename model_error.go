@@ -9,10 +9,11 @@
 
 package pdnsapi
 
+// Returned when the server encounters an error. Either in client input or internally
 type ModelError struct {
 
 	// A human readable error message
-	Error_ string `json:"error,omitempty"`
+	Error_ string `json:"error"`
 
 	// Optional array of multiple errors encountered during processing
 	Errors []string `json:"errors,omitempty"`
