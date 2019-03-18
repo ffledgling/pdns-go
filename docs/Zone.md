@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **Zone** | **string** | MAY contain a BIND-style zone file when creating a zone | [optional] [default to null]
 **Account** | **string** | MAY be set. Its value is defined by local policy | [optional] [default to null]
 **Nameservers** | **[]string** | MAY be sent in client bodies during creation, and MUST NOT be sent by the server. Simple list of strings of nameserver names, including the trailing dot. Not required for slave zones. | [optional] [default to null]
-**TsigMasterKeyIds** | **[]string** | The id of the TSIG keys used for master operation in this zone | [optional] [default to null]
-**TsigSlaveKeyIds** | **[]string** | The id of the TSIG keys used for slave operation in this zone | [optional] [default to null]
+**MasterTsigKeyIds** | **[]string** | The id of the TSIG keys used for master operation in this zone | [optional] [default to null]
+**SlaveTsigKeyIds** | **[]string** | The id of the TSIG keys used for slave operation in this zone | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

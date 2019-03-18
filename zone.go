@@ -70,8 +70,8 @@ type Zone struct {
 	Nameservers []string `json:"nameservers,omitempty"`
 
 	// The id of the TSIG keys used for master operation in this zone
-	TsigMasterKeyIds []string `json:"tsig_master_key_ids,omitempty"`
+	MasterTsigKeyIds []string `json:"master_tsig_key_ids,omitempty"`
 
 	// The id of the TSIG keys used for slave operation in this zone
-	TsigSlaveKeyIds []string `json:"tsig_slave_key_ids,omitempty"`
+	SlaveTsigKeyIds []string `json:"slave_tsig_key_ids,omitempty"`
 }
