@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Rrsets** | [**[]RrSet**](RRSet.md) | RRSets in this zone | [optional] [default to null]
 **Serial** | **int32** | The SOA serial number | [optional] [default to null]
 **NotifiedSerial** | **int32** | The SOA serial notifications have been sent out for | [optional] [default to null]
+**EditedSerial** | **int32** | The SOA serial as seen in query responses. Calculated using the SOA-EDIT metadata, default-soa-edit and default-soa-edit-signed settings | [optional] [default to null]
 **Masters** | **[]string** |  List of IP addresses configured as a master for this zone (“Slave” type zones only) | [optional] [default to null]
 **Dnssec** | **bool** | Whether or not this zone is DNSSEC signed (inferred from presigned being true XOR presence of at least one cryptokey with active being true) | [optional] [default to null]
 **Nsec3param** | **string** | The NSEC3PARAM record | [optional] [default to null]

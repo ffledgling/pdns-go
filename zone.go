@@ -36,6 +36,9 @@ type Zone struct {
 	// The SOA serial notifications have been sent out for
 	NotifiedSerial int32 `json:"notified_serial,omitempty"`
 
+	// The SOA serial as seen in query responses. Calculated using the SOA-EDIT metadata, default-soa-edit and default-soa-edit-signed settings
+	EditedSerial int32 `json:"edited_serial,omitempty"`
+
 	//  List of IP addresses configured as a master for this zone (“Slave” type zones only)
 	Masters []string `json:"masters,omitempty"`
 
