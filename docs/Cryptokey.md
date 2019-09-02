@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type_** | **string** | set to \&quot;Cryptokey\&quot; | [optional] [default to null]
-**Id** | **string** | The internal identifier, read only | [optional] [default to null]
+**Id** | **int32** | The internal identifier, read only | [optional] [default to null]
 **Keytype** | **string** |  | [optional] [default to null]
 **Active** | **bool** | Whether or not the key is in active use | [optional] [default to null]
 **Dnskey** | **string** | The DNSKEY record for this key | [optional] [default to null]
